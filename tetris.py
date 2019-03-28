@@ -388,5 +388,5 @@ class TetrisApp(object):
 			#print(pygame.surfarray.pixels3d(x))
 
 if __name__ == '__main__':
-	App = TetrisApp(human_player = False)
+	App = TetrisApp(human_player = True)
 	App.run()
