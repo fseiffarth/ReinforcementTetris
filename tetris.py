@@ -44,7 +44,7 @@ import pygame, sys
 import numpy as np
 import time
 
-# The configuration
+# Game configurations
 cell_size =	18
 cols =		25
 rows =		25
@@ -91,6 +91,9 @@ tetris_shapes = [
 	
 ]
 
+
+
+#Game functions
 def rotate_clockwise(shape):
 	return [ [ shape[y][x]
 			for y in range(len(shape)) ]
@@ -125,7 +128,7 @@ def new_board():
 	return board
 
 
-
+#State space of the game
 class StateSpace(object):
 	def __init__(self, board, stone, stone_pos, next_stone, score = 0, reward = 0):
 		####state of the board
@@ -157,7 +160,7 @@ class StateSpace(object):
 		self.reward = reward
 		
 		
-
+#Action space of the game
 class ActionSpace(object):
 	def __init__(self):
 		self.actions = ['LEFT','RIGHT', 'DOWN', 'UP', 'RETURN']
@@ -361,7 +364,7 @@ class TetrisApp(object):
 			
 			
 			
-			#########Human Player of KI
+			#########Human Player or KI
 			if self.human_player:
 				for event in pygame.event.get():
 					if event.type == pygame.USEREVENT+1:
@@ -373,7 +376,7 @@ class TetrisApp(object):
 							if event.key == eval("pygame.K_"+key):
 								key_actions[key]()
 			else:
-				#########Here comes the AI
+				#########Here comes the Learner
 				##################################
 				action = action_space.actions[0]
 				####################################
